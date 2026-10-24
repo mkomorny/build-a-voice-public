@@ -1,0 +1,43 @@
+HOW TO USE: build-a-voice
+====================================
+
+PURPOSE
+  Design a custom offline Kokoro TTS voice: pick one of 11 base voices or
+  blend two or more, save the blend as a named persona, and speak any text.
+
+CAPABILITIES
+  - Model files at B:\AI Directories_Databases\models\kokoro
+    (kokoro-v0_19.onnx + voices.bin); leftover fallback C:\Users\<you>\kokoro_models
+  - List voices, speak with one voice, blend by ratio, save/reuse personas
+  - Speed and en-us / en-gb language hints
+  - Writes a .wav you can play
+
+USE CASES
+  - Character / narrator voice for a script
+  - A/B the same line in several voices
+  - Reusable persona cast (narrator, villain, sidekick)
+  - Proofread writing by ear
+
+IDEAS
+  - Blend af_bella:0.6,am_adam:0.4 and save as noir_detective
+  - Same line at 50/50 vs 70/30 to hear the shift
+  - Pair with speaking-personality-profile for a matching character
+
+PROMPTS YOU CAN PASTE
+  Build me a voice character.
+
+  Blend a British male and an American female voice.
+
+  Say this out loud in a detective voice: [text]
+
+  List the voices you have.
+
+  Save this blend as a persona named noir_detective.
+
+EXAMPLE FLOW
+  You:   Blend af_bella 60 and am_adam 40. Read: "The street was empty."
+  Model: runs scripts/speak.py --blend "af_bella:0.6,am_adam:0.4" --text "..." --out out.wav
+         plays or points to the wav
+
+DEFAULT GOALS IF YOU DON'T NAME ONE
+  List the 11 base voices, then speak a short test line in am_adam.
